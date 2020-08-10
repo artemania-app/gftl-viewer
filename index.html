@@ -4,15 +4,34 @@
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
     
     <img src="img/logo.png" id="logo" >
 
-    <button onclick="changeFile()" id="button">Siguiente</button>  
+
     <div id="model">
         <model-viewer id= "mod" src="gltf/cats.gltf" auto-rotate camera-controls max-camera-orbit= "calc(60deg - env(window-scroll-y) * 60deg) 90deg auto"></model-viewer>
+    </div>
+
+
+    <div id="catalog">
+
+        <div id="button">
+            <button onclick="changeFile()" id="button">Siguiente</button>  
+        </div>
+
+
+    </div>
+
+
+
+    
+    <div id="social-media">
+        <button id = "instagram" class="btn" ><i class="fa fa-instagram" ></i>
+        <button id = "facebook" class="btn" ><i class="fa fa-facebook-f" ></i>
     </div>
 
     <script>
@@ -27,6 +46,20 @@
             else{next = 0};
 
             document.getElementById("mod").src = `gltf/${files[next]}.gltf`;           }
+
+
+        let urls = {
+            instagram: "https://www.instagram.com/arte.mania.ec/", 
+            facebook: "https://www.facebook.com/artemanialineahogar", 
+        };
+
+        function goTo()
+        {
+
+            window.open(`${urls[this.id]}`);
+        }
+        document.getElementById('instagram').onclick = goTo;
+        document.getElementById('facebook').onclick = goTo;
 
     </script>
 </body>
